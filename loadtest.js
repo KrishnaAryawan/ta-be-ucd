@@ -7,9 +7,9 @@ export const options = {
 
 const BASE_URL = "http://localhost:3000";
 
-const nameFirstRoom = ["King Size", "Individu", "Couple", "Keluarga"];
-const nameSecondRoom = ["Lantai 1", "Lantai 2", "Lantai 3", "Lantai 4"];
-const nameThirdRoom = ["Kecil", "Sedang", "Besar"];
+const nameFirstMenu = ["King Size", "Individu", "Couple", "Keluarga"];
+const nameSecondMenu = ["Lantai 1", "Lantai 2", "Lantai 3", "Lantai 4"];
+const nameThirdMenu = ["Kecil", "Sedang", "Besar"];
 
 const description = [
 	"Ipsum consectetur ex ea laboris veniam. Fugiat quis aliqua aliqua qui id cupidatat aliqua culpa. Ut dolor consectetur proident aliquip ea sunt quis anim cillum esse.",
@@ -23,7 +23,7 @@ const description = [
 	"Fugiat ut do nisi ad elit anim ex enim nisi. Cupidatat pariatur eu est non deserunt deserunt magna ex exercitation labore nulla et duis sint. Cupidatat aliquip amet aute enim dolor consectetur deserunt ea consequat aute irure sunt consectetur aliqua. Minim est officia esse excepteur incididunt elit deserunt deserunt minim eu esse.",
 ];
 
-const pricePerDayPool = [20000, 50000, 100000, 124000, 413000, 39999, 45999];
+const pricePerPcsPool = [20000, 50000, 100000, 124000, 413000, 39999, 45999];
 
 const imageUrlPool = [
 	"https://img1.10bestmedia.com/Images/Photos/378649/Park-Hyatt-New-York-Manhattan-Sky-Suite-Master-Bedroom-low-res_54_990x660.jpg",
@@ -44,16 +44,16 @@ const pickRandom = (pool) => {
 
 export default () => {
 	http.post(
-		`${BASE_URL}/room`,
+		`${BASE_URL}/ordernow`,
 		JSON.stringify({
 			name:
-				pickRandom(nameFirstRoom) +
+				pickRandom(nameFirstMenu) +
 				" " +
-				pickRandom(nameSecondRoom) +
+				pickRandom(nameSecondMenu) +
 				" " +
-				pickRandom(nameThirdRoom),
+				pickRandom(nameThirdMenu),
 			description: pickRandom(description),
-			pricePerDay: pickRandom(pricePerDayPool),
+			pricePerPcs: pickRandom(pricePerPcsPool),
 			imageUrl: pickRandom(imageUrlPool),
 		}),
 		{

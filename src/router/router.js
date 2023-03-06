@@ -67,12 +67,12 @@ router.get("/menu/:id", async (req, res, next) => {
 	}
 });
 
-router.get("/menus", async (req, res, next) => {
+router.get("/ordernow", async (req, res, next) => {
 	try {
-		const menus = await getAllMenu();
+		const ordernow = await getAllMenu();
 		return res
 			.json({
-				data: menus,
+				data: ordernow,
 			})
 			.status(200);
 	} catch (e) {
