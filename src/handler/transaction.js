@@ -1,7 +1,7 @@
 const { insertNewTransaction } = require("../store/transaction");
 
-const insertTransactionData = async (saran) => {
-	const resp = await insertNewTransaction(saran).then((res) =>
+const insertTransactionData = async (menu) => {
+	const resp = await insertNewTransaction(menu).then((res) =>
 		console.log(res)
 	);
 	return resp;
