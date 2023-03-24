@@ -17,5 +17,23 @@ const insertNewTransaction = async (trx) => {
 		);
 	});
 };
+const insertNewTransactionWithoutMenuId = async (trx) => {
+	return new Promise((resolve, reject) => {
+		database.execute(
+			"INSERT INTO `transaksi`(`total`, `name`, payment) VALUES (?,?,?)",
+			[trx.total, trx.name, trx.payment],
+			(err, result) => {
+				if (err) {
+					console.error("error querying database: ", err);
+					reject(err);
+					return;
+				}
+				resolve(result.id);
+			}
+		);
+	});
+};
 
 module.exports.insertNewTransaction = insertNewTransaction;
+module.exports.insertNewTransactionWithoutMenuId =
+	insertNewTransactionWithoutMenuId;

@@ -5,7 +5,10 @@ const {
 	updateMenu,
 	deleteMenu,
 } = require("../handler/menu");
-const { insertTransactionData } = require("../handler/transaction");
+const {
+	insertTransactionData,
+	insertTransactionDataWithoutId,
+} = require("../handler/transaction");
 
 const router = require("express").Router();
 
@@ -84,6 +87,18 @@ router.post("/transaction", async (req, res, next) => {
 	try {
 		const trx = req.body;
 		const resp = await insertTransactionData(trx);
+
+		res.json({
+			insertedId: resp,
+		}).status(200);
+	} catch (e) {
+		next(e);
+	}
+});
+router.post("/transaction-withoutId", async (req, res, next) => {
+	try {
+		const trx = req.body;
+		const resp = await insertTransactionDataWithoutId(trx);
 
 		res.json({
 			insertedId: resp,
